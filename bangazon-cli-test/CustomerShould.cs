@@ -1,15 +1,20 @@
 using System;
 using Xunit;
 using bangazon_cli;
+using System.Collections.Generic;
 
 namespace bangazon_cli_test
 {
     public class CustomerShould
     {
+    private Customer _customer;
+
         // ADD CUSTOMER TEST
         [Fact]
         public void AddCustomer()
         {
+            // REFACTOR newCustomer? use _customer instead?
+            
             Customer newCustomer = new Customer();
             newCustomer.CustomerId = 1;
             newCustomer.FirstName = "Pippins";
@@ -37,7 +42,7 @@ namespace bangazon_cli_test
             newCustomer.AddCustomer(_customer);
             List<Customer> allCustomers = newCustomer.GetAllCustomers();
 
-            Assert.Contains(_customer, allCustomer);
+            Assert.Contains(_customer, allCustomers);
         }
 
         [Fact]
