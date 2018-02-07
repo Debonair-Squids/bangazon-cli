@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\bangazon-cli-src.csproj" />
+    <ProjectReference Include="..\bangazon-cli-src\bangazon-cli.csproj" />
   </ItemGroup>
 
 </Project>

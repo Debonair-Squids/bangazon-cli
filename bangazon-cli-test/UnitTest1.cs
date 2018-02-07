@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace test
+namespace bangazon_cli_test
 {
     public class UnitTest1
     {
