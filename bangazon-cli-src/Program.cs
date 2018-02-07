@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace bangazon-cli
+namespace bangazon_cli
 {
     class Program
     {
