@@ -1,8 +1,9 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace bangazon_cli
 {
-    class Customer
+    public class Customer
     {
         [Key]
         public int CustomerId {get; set;}
@@ -20,6 +21,6 @@ namespace bangazon_cli
         [Required]
         public int Zip {get; set;}
         [Required]
-        public int Phone {get; set;}
+        public long Phone {get; set;}
     }
 }
