@@ -29,8 +29,8 @@ namespace bangazon_cli_test
                 "123 Buttz Rd.",
                 "Nashville",
                 "TN",
-                37210,
-                9876543210
+                "37210",
+                "9876543210"
             );
         }
 
