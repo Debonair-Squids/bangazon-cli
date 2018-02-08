@@ -7,8 +7,8 @@ namespace bangazon_cli
         static void Main(string[] args)
         {
             // Seed the database if none exists
-            var db = new DatabaseInitializer();
-            db.VerifyDataExists();
+            // var db = new DatabaseInitializer();
+            // db.VerifyDataExists();
 
             // Present the main menu
             Console.WriteLine ("*************************************************");
