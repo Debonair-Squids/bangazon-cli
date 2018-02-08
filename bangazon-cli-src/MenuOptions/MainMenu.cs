@@ -20,7 +20,7 @@ namespace bangazon_cli
             Console.WriteLine ("9. Show Stale Products");
             Console.WriteLine ("10. Show Customer Revenue Report");
             Console.WriteLine ("11. Show Overall Product Popularity");
-            Console.WriteLine ("12. Exit");
+            Console.WriteLine ("12. GIT OUT");
             Console.Write ("> ");
             ConsoleKeyInfo enteredKey = Console.ReadKey();
             Console.WriteLine("");

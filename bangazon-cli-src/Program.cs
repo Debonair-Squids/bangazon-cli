@@ -7,15 +7,14 @@ namespace bangazon_cli
         static void Main(string[] args)
         {
             // Seed the database if none exists
-            // var db = new DatabaseInitializer();
-            // db.VerifyDataExists();
+            var db = new DatabaseInitializer();
 
-            // Present the main menu
-            Console.WriteLine ("*************************************************");
-            Console.WriteLine ("Welcome to Bangazon! Command Line Ordering System");
-            Console.WriteLine ("*************************************************");
-            Console.WriteLine ("1. Create a customer account");
-			Console.Write ("> ");
+            // // Present the main menu
+            // Console.WriteLine ("*************************************************");
+            // Console.WriteLine ("Welcome to Bangazon! Command Line Ordering System");
+            // Console.WriteLine ("*************************************************");
+            // Console.WriteLine ("1. Create a customer account");
+			// Console.Write ("> ");
 
 			// Read in the user's choice
 			int choice;

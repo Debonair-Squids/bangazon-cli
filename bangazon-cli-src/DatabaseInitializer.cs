@@ -1,24 +1,19 @@
-// using System;
-// using Microsoft.Data.Sqlite;
+using System;
+using Microsoft.Data.Sqlite;
 
-// namespace bangazon_cli
-// {
-//     public class DatabaseInitializer
-//     {
-//         private string _connectionString;
-//         private SqliteConnection _connection;
-//         public DatabaseInitializer()
-//         {
-//             // Replace {you} with the correct value
-//             _connectionString = $"Data Source=/Users/japage/workspace/Server-Side/Bangazon/bangazon-cli/bangazon-cli.db";
+namespace bangazon_cli
+{
+    public class DatabaseInitializer
+    {
+        private string _connectionString;
+        private SqliteConnection _connection;
+        public DatabaseInitializer()
+        {
+            var env = System.Environment.GetEnvironmentVariable("bangazon_cli_db");
 
+            _connectionString = $"Data Source={env}";
 
-//             _connection = new SqliteConnection(_connectionString);
-//         }
-
-//         internal void VerifyDataExists()
-//         {
-//             throw new NotImplementedException();
-//         }
-//     }
-// }
+            _connection = new SqliteConnection(_connectionString);
+        }
+    }
+}
