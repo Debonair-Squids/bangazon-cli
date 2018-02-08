@@ -7,7 +7,7 @@ namespace bangazon_cli_test
     public class CustomerPaymentShould
     {
         private Customer _customer;
-        private Payment _payment;
+        private PaymentType _paymentType;
         public CustomerPaymentShould()
         {
             /*
@@ -33,7 +33,7 @@ namespace bangazon_cli_test
                 8087294354
             );
 
-             _payment = new Payment
+             _paymentType = new PaymentType
              (
                  1,
                 "Visa"
@@ -45,13 +45,16 @@ namespace bangazon_cli_test
         {
             CustomerPayment newCustomerPayment = new CustomerPayment
             (
-                
-
-
+                1,
+                1,
+                1,
+                12345
             );
-
+            Assert.Equal(1, newCustomerPayment.CustomerPaymentId);
+            Assert.Equal(1, newCustomerPayment.PaymentTypeId);
+            Assert.Equal(1, newCustomerPayment.CustomerId);
+            Assert.Equal(12345, newCustomerPayment.Account);
 
         }
     }
-
 }

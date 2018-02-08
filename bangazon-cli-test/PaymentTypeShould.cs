@@ -4,21 +4,21 @@ using bangazon_cli;
 
 namespace bangazon_cli_test
 {
-    public class PaymentShould
+    public class PaymentTypeShould
     {
         // private Payment _payment;
         // public PaymentShould()
         // {
         //     /*
         //     Properties of Payment
-        //     - PaymentId
-        //     - PaymentType
+        //     - PaymentTypeId
+        //     - PaymentTypeName
         //      */
 
         //     _payment = new Payment()
         //     {
-        //         PaymentId = 1,
-        //         PaymentType = "Visa"
+        //         PaymentTypeId = 1,
+        //         PaymentTypeName = "Visa"
         //     };
 
         // }
@@ -26,15 +26,14 @@ namespace bangazon_cli_test
         [Fact]
         public void AddPayment()
         {
-            Payment newPayment = new Payment
+            PaymentType newPaymentType = new PaymentType
             (
                 1,
                 "Visa"
             );
-            Assert.Equal(newPayment.PaymentId, 1);
-            Assert.Equal(newPayment.PaymentType, "Visa");
+            Assert.Equal(1, newPaymentType.PaymentTypeId);
+            Assert.Equal("Visa", newPaymentType.PaymentTypeName);
         }
-
 
     }
 }
