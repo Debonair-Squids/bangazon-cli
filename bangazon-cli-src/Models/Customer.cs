@@ -38,7 +38,7 @@ namespace bangazon_cli
         }
 
         // Constructor for Customer accepting all property parameters
-        public Customer (int cid, string first, string last, string address, string city, string state, int zip, int phone)
+        public Customer (int cid, string first, string last, string address, string city, string state, int zip, long phone)
         {
             this.CustomerId = cid;
             this.FirstName = first;
