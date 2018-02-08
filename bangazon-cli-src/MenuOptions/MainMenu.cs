@@ -4,7 +4,7 @@ namespace bangazon_cli
 {
     public class MainMenu
     {
-        public static int Show()
+        public static void Show()
         {
             Console.Clear();
             Console.WriteLine ("ITS BANGAZON BITCHES");
@@ -20,11 +20,20 @@ namespace bangazon_cli
             Console.WriteLine ("9. Show Stale Products");
             Console.WriteLine ("10. Show Customer Revenue Report");
             Console.WriteLine ("11. Show Overall Product Popularity");
-            Console.WriteLine ("12. Exit");
+            Console.WriteLine ("12. GIT OUT");
             Console.Write ("> ");
-            ConsoleKeyInfo enteredKey = Console.ReadKey();
-            Console.WriteLine("");
-            return int.Parse(enteredKey.KeyChar.ToString());
+
+            int choice;
+			Int32.TryParse (Console.ReadLine(), out choice);
+
+            if (choice == 1)
+            {
+                AddCustomerMenu.Show();
+            }
+            // else if (choice == 2)
+            // {
+            //     ActiveCustomerMenu.Show();
+            // }
         }
     }
 }

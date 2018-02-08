@@ -21,9 +21,9 @@ namespace bangazon_cli
         [Required]
         public string State {get; set;}
         [Required]
-        public int Zip {get; set;}
+        public string Zip {get; set;}
         [Required]
-        public long Phone {get; set;}
+        public string Phone {get; set;}
 
         public Customer ()
         {
@@ -33,12 +33,12 @@ namespace bangazon_cli
             this.StreetAddress = "123 Buttz Rd";
             this.City = "Nashville";
             this.State = "TN";
-            this.Zip = 37210;
-            this.Phone = 9876543210;
+            this.Zip = "37210";
+            this.Phone = "9876543210";
         }
 
         // Constructor for Customer accepting all property parameters
-        public Customer (int cid, string first, string last, string address, string city, string state, int zip, long phone)
+        public Customer (int cid, string first, string last, string address, string city, string state, string zip, string phone)
         {
             this.CustomerId = cid;
             this.FirstName = first;
