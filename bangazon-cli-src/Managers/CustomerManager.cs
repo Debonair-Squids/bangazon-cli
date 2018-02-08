@@ -7,6 +7,9 @@ namespace bangazon_cli
     {
         private List<Customer> _customerTable = new List<Customer>();
 
+        private Customer ActiveCustomer;
+
+
         public void AddCustomer(Customer steve)
         {
             _customerTable.Add(steve);
@@ -19,7 +22,9 @@ namespace bangazon_cli
 
         public Customer GetSingleCustomer(int Id)
         {
-            return _customerTable.Where(c => c.CustomerId == Id).Single();
+            ActiveCustomer = _customerTable.Where(c => c.CustomerId == Id).Single();
+            return ActiveCustomer;
+        
         }
     }
 }

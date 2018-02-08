@@ -57,5 +57,15 @@ namespace bangazon_cli_test
             Assert.Equal("McGee", theCustomer.LastName);
 
         }
-    }
+        // [Fact]
+        // public void  GetActiveCustomer(){
+        //     CustomerManager manager = new CustomerManager();
+        //         manager.AddCustomer(_customer);
+        //            Customer ActiveCustomer = manager.GetSingleCustomer(1);
+
+
+        // Assert.Equal(_customer, ActiveCustomer);
+        // }
+    };
 }
+
