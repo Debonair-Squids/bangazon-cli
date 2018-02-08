@@ -9,7 +9,7 @@ namespace bangazon_cli
             Console.Clear();
             Console.WriteLine ("ITS BANGAZON BITCHES");
             Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine ("1. Add Customer");
+            Console.WriteLine ("1. Create a customer account");
             Console.WriteLine ("2. Select Customer");
             Console.WriteLine ("3. Create Payment Option");
             Console.WriteLine ("4. Add Product to Sell");

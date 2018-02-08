@@ -6,39 +6,46 @@ namespace bangazon_cli
     {
         static void Main(string[] args)
         {
-            int choice;
+            // Seed the database if none exists
+            var db = new DatabaseInitializer();
+            db.VerifyDataExists();
 
-            do
+            // Present the main menu
+            Console.WriteLine ("*************************************************");
+            Console.WriteLine ("Welcome to Bangazon! Command Line Ordering System");
+            Console.WriteLine ("*************************************************");
+            Console.WriteLine ("1. Create a customer account");
+			Console.Write ("> ");
+
+			// Read in the user's choice
+			int choice;
+			Int32.TryParse (Console.ReadLine(), out choice);
+
+            // If option 1 was chosen, create a new customer account
+            if (choice == 1)
             {
-                choice = MainMenu.Show();
-
-                switch (choice)
-                {
-                    case 1:
-                        // //add cohort
-                        // Console.WriteLine("Enter the Name of the Cohort (example: Day 22 or Evening 3)");
-                        // Console.Write(">");
-                        // string CohortName = Console.ReadLine();
-
-                        // Console.WriteLine("Enter the id of the technology used in this Cohort.");
-                        // //run code to display all tech in table with id number and tech name
-                        // Dictionary<int, string> techList = tech.GetTech();
-                        // foreach(KeyValuePair<int, string> t in techList){
-                        //     Console.WriteLine(t.Value + " = " + t.Key);
-                        // }
-
-                        // Console.Write(">");
-                        // int CohortTech = int.Parse(Console.ReadLine());
-
-                        // // Insert Cohort into database
-                        // db.Insert($@"
-                        //     INSERT INTO Cohort
-                        //     (CohortId, Name, TechId)
-                        //     VALUES
-                        //     (null, '{CohortName}', {CohortTech})
-                        // ");
-                        break;
-                }
+                Console.WriteLine ("Enter customer first name");
+                Console.Write ("> ");
+                string FirstName = Console.ReadLine();
+                Console.WriteLine ("Enter customer last name");
+                Console.Write ("> ");
+                string LastName = Console.ReadLine();
+                Console.WriteLine ("Enter customer street address");
+                Console.Write ("> ");
+                string StreetAddress = Console.ReadLine();
+                Console.WriteLine ("Enter customer city");
+                Console.Write ("> ");
+                string City = Console.ReadLine();
+                Console.WriteLine ("Enter customer state");
+                Console.Write ("> ");
+                string State = Console.ReadLine();
+                Console.WriteLine ("Enter customer zip code");
+                Console.Write ("> ");
+                string Zip = Console.ReadLine();
+                Console.WriteLine ("Enter customer phone number");
+                Console.Write ("> ");
+                string Phone = Console.ReadLine();
+                CustomerManager manager = new CustomerManager();
             }
         }
     }
