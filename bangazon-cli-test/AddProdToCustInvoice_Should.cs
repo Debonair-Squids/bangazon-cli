@@ -15,12 +15,11 @@ namespace bangazon_cli_test
             -Then the user should be prompted with a numbered list of all products
             -And when one is chosen, the product should be added to an order for the active customer*/
             
-            Invoice newInvoice = new Invoice();
-            
-            newInvoice.InvoiceId = 1;
-            newInvoice.CustomerPaymentId = 1;
-            newInvoice.CustomerId = 1;
-            newInvoice.InvoiceDate = DateTime.Now;
+            Invoice Invoice1 = new Invoice();
+            Invoice1.InvoiceId = 1;
+            Invoice1.CustomerPaymentId = 1;
+            Invoice1.CustomerId = 1;
+            Invoice1.InvoiceDate = DateTime.Now;
         }
     }
 }
