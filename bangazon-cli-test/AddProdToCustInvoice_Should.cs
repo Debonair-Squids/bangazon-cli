@@ -17,10 +17,10 @@ namespace bangazon_cli_test
             
             Invoice newInvoice = new Invoice();
             
-            newInvoice.OrderId = 1;
+            newInvoice.InvoiceId = 1;
             newInvoice.CustomerPaymentId = 1;
             newInvoice.CustomerId = 1;
-            newInvoice.OrderDate = DateTime.Now;
+            newInvoice.InvoiceDate = DateTime.Now;
         }
     }
 }
