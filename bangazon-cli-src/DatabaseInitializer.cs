@@ -10,7 +10,7 @@ namespace bangazon_cli
         public DatabaseInitializer()
         {
             // Replace {you} with the correct value
-            _connectionString = $"Data Source=.db";
+            _connectionString = $"Data Source=/Users/japage/workspace/Server-Side/Bangazon/bangazon-cli/bangazon-cli.db";
 
 
             _connection = new SqliteConnection(_connectionString);
