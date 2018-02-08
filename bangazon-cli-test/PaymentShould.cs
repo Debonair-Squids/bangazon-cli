@@ -6,7 +6,7 @@ namespace bangazon_cli_test
 {
     public class PaymentShould
     {
-        // private Payment _Payment;
+        // private Payment _payment;
         // public PaymentShould()
         // {
         //     /*
@@ -15,7 +15,7 @@ namespace bangazon_cli_test
         //     - PaymentType
         //      */
 
-        //     _Payment = new Payment()
+        //     _payment = new Payment()
         //     {
         //         PaymentId = 1,
         //         PaymentType = "Visa"
@@ -34,5 +34,7 @@ namespace bangazon_cli_test
             Assert.Equal(newPayment.PaymentId, 1);
             Assert.Equal(newPayment.PaymentType, "Visa");
         }
+
+
     }
 }
