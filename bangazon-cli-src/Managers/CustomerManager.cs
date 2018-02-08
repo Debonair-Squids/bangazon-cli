@@ -11,7 +11,7 @@ namespace bangazon_cli
         public void AddCustomer(Customer steve)
         {
             _customerTable.Add(steve);
-        }
+        }   
 
         public List<Customer> GetAllCustomers ()
         {
