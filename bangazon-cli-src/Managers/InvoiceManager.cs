@@ -4,8 +4,12 @@ using System;
 namespace bangazon_cli
 {
 
-    //Create a controller to test add product to order
     public class InvoiceManager
     {
-        //Method to ....
+        //Create a method to add product to customer order
+        public void AddProdToCustInvoice()
+        {
+
+        }
     }
+}
