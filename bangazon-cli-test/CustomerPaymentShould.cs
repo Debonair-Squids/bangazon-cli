@@ -55,14 +55,14 @@ namespace bangazon_cli_test
         public void GetPaymentsForCustomer()
         {
 
-            List<CustomerPayment> result1 = _paymentManager.GetCustomerPayments(_customer.CustomerId);
-            Assert.Empty(result1);
+            List<CustomerPayment> paymentList = _paymentManager.GetCustomerPayments(_customer.CustomerId);
+            Assert.Empty(paymentList);
             Assert.Equal(5, _customer.CustomerId);
 
             _paymentManager.AddPayment(_customerPayment);
 
-            List<CustomerPayment> result2 = _paymentManager.GetCustomerPayments(_customer.CustomerId);
-            Assert.True(result2.Count > 0);
+            paymentList = _paymentManager.GetCustomerPayments(_customer.CustomerId);
+            Assert.True(paymentList.Count > 0);
             Assert.Equal(5, _customerPayment.CustomerId);
         }
 
