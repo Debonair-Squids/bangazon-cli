@@ -6,7 +6,7 @@ namespace bangazon_cli_test
     public class UnitTest1
     {
         [Fact]
-        public void AddCustomer()
+        public void Test1()
         {
 
         }
