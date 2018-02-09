@@ -7,9 +7,9 @@ namespace bangazon_cli
     {
         private string _connectionString;
         private SqliteConnection _connection;
-        public DatabaseInitializer()
+        public DatabaseInitializer(string database)
         {
-            var env = System.Environment.GetEnvironmentVariable("bangazon_cli_db");
+            string env = System.Environment.GetEnvironmentVariable($"{database}");
 
             _connectionString = $"Data Source={env}";
 

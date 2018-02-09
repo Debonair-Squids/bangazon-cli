@@ -24,11 +24,11 @@ namespace bangazon_cli
 
     public IEnumerable<Product> GetAllCustomerProducts(Customer activeCustomer)
     {
-     IEnumerable<Product> allProducts = 
+     IEnumerable<Product> allProducts =
      from prod in products
      where prod.CustomerId == activeCustomer.CustomerId
      select prod;
-     return allProducts; 
+     return allProducts;
 
     }
     public Product GetSingleCustomerProduct(Customer activeCustomer , string title)
