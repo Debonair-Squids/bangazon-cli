@@ -7,24 +7,18 @@ namespace bangazon_cli
     public class CustomerPayment
     {
         [Key]
-        public int CustomerPaymentId { get; set;}
-
-        public int PaymentTypeId { get; set; }
-
-        public PaymentType PaymentType { get; set; }
-
+        public int CustomerPaymentId { get; set; }
+        public string PaymentTypeName { get; set; }
+        public int Account { get; set; }
         public int CustomerId { get; set; }
-
         public Customer Customer { get; set; }
 
-        public int Account { get; set; }
-
-        public CustomerPayment(int customerPaymentId, int paymentTypeId, int customerId, int account)
+        public CustomerPayment(int customerPaymentId, string paymentTypeName, int account, int customerId)
         {
             this.CustomerPaymentId = customerPaymentId;
-            this.PaymentTypeId = paymentTypeId;
-            this.CustomerId = customerId;
+            this.PaymentTypeName = paymentTypeName;
             this.Account = account;
+            this.CustomerId = customerId;
         }
     }
 }

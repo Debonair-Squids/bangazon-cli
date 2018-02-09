@@ -1,13 +1,15 @@
 using System;
 using Xunit;
 using bangazon_cli;
+using System.Collections.Generic;
 
 namespace bangazon_cli_test
 {
+    private CustomerPaymentManager _paymentManager;
     public class CustomerPaymentShould
     {
         private Customer _customer;
-        private PaymentType _paymentType;
+
         public CustomerPaymentShould()
         {
             /*
@@ -32,29 +34,21 @@ namespace bangazon_cli_test
                 96706,
                 8087294354
             );
-
-             _paymentType = new PaymentType
-             (
-                 1,
-                "Visa"
-             );
-
         }
         [Fact]
-        public void AddCustomerPaymentShould()
+        public void AddPaymentShould()
         {
-            CustomerPayment newCustomerPayment = new CustomerPayment
+            CustomerPayment newPayment = new CustomerPayment
             (
                 1,
-                1,
-                1,
-                12345
+                "Visa",
+                12345,
+                1
             );
-            Assert.Equal(1, newCustomerPayment.CustomerPaymentId);
-            Assert.Equal(1, newCustomerPayment.PaymentTypeId);
-            Assert.Equal(1, newCustomerPayment.CustomerId);
-            Assert.Equal(12345, newCustomerPayment.Account);
-
+            Assert.Equal(1, newPayment.CustomerPaymentId);
+            Assert.Equal("Visa", newPayment.PaymentTypeName);
+            Assert.Equal(12345, newPayment.Account);
+            Assert.Equal(1, newPayment.CustomerId);
         }
     }
 }
