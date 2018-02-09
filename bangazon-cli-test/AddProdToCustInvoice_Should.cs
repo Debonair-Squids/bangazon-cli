@@ -1,4 +1,5 @@
 using System;
+using bangazon_cli;
 using Xunit;
 
 namespace bangazon_cli_test
@@ -7,43 +8,28 @@ namespace bangazon_cli_test
     {
 
         [Fact]
-        public void AddProdToCustOrder()
+        public void AddProdToCustInv()
         {
             //Construct an invoice, products, and line items to test
-            Invoice Invoice1 = new Invoice();
-            Invoice1.InvoiceId = 1;
-            Invoice1.CustomerPaymentId = 1;
-            Invoice1.CustomerId = 1;
-            Invoice1.InvoiceDate = DateTime.Now;
+            Invoice Invoice1 = new Invoice(1,1,1, DateTime.Now);
 
             Product Product1 = new Product();
             Product1.ProductId = 1;
             Product1.Title = "The Sims";
-            Product1.Description = "The Sims base game pack"
+            Product1.Description = "The Sims base game pack";
             Product1.Quantity = 1;
             Product1.DateCreated = DateTime.Now;
 
             Product Product2 = new Product();
             Product1.ProductId = 2;
             Product1.Title = "Destiny 2";
-            Product1.Description = "Destiny, an xbox one game"
+            Product1.Description = "Destiny, an xbox one game";
             Product1.Quantity = 1;
             Product1.DateCreated = DateTime.Now;
 
-            LineItem LineItem1 = new LineItem();
-            LineItem1.LineItemId = 1;
-            LineItem1.InvoiceId = 1;
-            LineItem1.ProductId = 1;
-
-            LineItem LineItem2 = new LineItem();
-            LineItem1.LineItemId = 2;
-            LineItem1.InvoiceId = 1;
-            LineItem1.ProductId = 2;
-
-            LineItem LineItem3 = new LineItem();
-            LineItem1.LineItemId = 3;
-            LineItem1.InvoiceId = 1;
-            LineItem1.ProductId = 1;
+            LineItem LineItem1 = new LineItem(1,1,1);
+            LineItem LineItem2 = new LineItem(2,1,2);
+            LineItem LineItem3 = new LineItem(3,1,1);
             
             /*
             -Given a customer has been made active in the program
