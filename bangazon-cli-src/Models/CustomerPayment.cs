@@ -13,6 +13,15 @@ namespace bangazon_cli
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
+
+        public CustomerPayment()
+        {
+            this.CustomerPaymentId = 1;
+            this.PaymentTypeName = "Visa";
+            this.Account = 12345;
+            this.CustomerId = 1;
+        }
+
         public CustomerPayment(int customerPaymentId, string paymentTypeName, int account, int customerId)
         {
             this.CustomerPaymentId = customerPaymentId;

@@ -5,50 +5,67 @@ using System.Collections.Generic;
 
 namespace bangazon_cli_test
 {
-    private CustomerPaymentManager _paymentManager;
     public class CustomerPaymentShould
     {
+        private CustomerPaymentManager _paymentManager;
         private Customer _customer;
+        private CustomerPayment _customerPayment;
 
         public CustomerPaymentShould()
         {
-            /*
-                Properties of Customer
-                    CustomerId = 1;
-                    FirstName = "Sofia";
-                    LastName= "Howard";
-                    StreetAddress = "110 Keoneula Blvd";
-                    City = "Ewa Beach"
-                    State= "Hawaii";
-                    Zip = 96706;
-                    Phone= "808-729-4354";
-             */
-            _customer = new Customer
-            (
-                1,
-                "Sofia",
-                "Howard",
-                "110 Keoneula Blvd",
-                "Ewa Beach",
-                "Hawaii",
-                96706,
-                8087294354
-            );
+            // constructors to hold data
+            _paymentManager = new CustomerPaymentManager();
+
+
+            _customer = new Customer()
+            {
+                FirstName = "Sofia",
+                LastName = "Howard",
+                CustomerId = 5
+            };
+
+            int number = 4567;
+
+            string paymentTypeName = "Master";
+            _customerPayment = new CustomerPayment()
+            {
+                PaymentTypeName = paymentTypeName,
+                Account = number,
+                CustomerId = _customer.CustomerId
+            };
+
         }
+
+        // AddPaymentForCurrentCustomer is a test method for the 'AddPayment()' method in CustomerPaymentManager.cs
         [Fact]
-        public void AddPaymentShould()
+        public void AddPaymentForCurrentCustomer()
         {
-            CustomerPayment newPayment = new CustomerPayment
-            (
-                1,
-                "Visa",
-                12345,
-                1
-            );
-            Assert.Equal(1, newPayment.CustomerPaymentId);
-            Assert.Equal("Visa", newPayment.PaymentTypeName);
-            Assert.Equal(12345, newPayment.Account);
-            Assert.Equal(1, newPayment.CustomerId);
+            int paymentTest = _paymentManager.AddPayment(_customerPayment);
+            Assert.True(paymentTest != 0);
+            Assert.Equal(5, _customerPayment.CustomerId);
+            Assert.Equal("Master", _customerPayment.PaymentTypeName);
+            Assert.Equal(4567, _customerPayment.Account);
         }
+
+        // GetPaymentsForCustomer is a test method for the GetCustomerPayments() method in the CustomerPaymentManager.cs
+        // The first test checks to see if the list is empty.
+        // Then add a Customer payment to the list
+        // The second text makes sure the list is not empty.
+        [Fact]
+        public void GetPaymentsForCustomer()
+        {
+
+            List<CustomerPayment> result1 = _paymentManager.GetCustomerPayments(_customer.CustomerId);
+            Assert.Empty(result1);
+            Assert.Equal(5, _customer.CustomerId);
+
+            _paymentManager.AddPayment(_customerPayment);
+
+            List<CustomerPayment> result2 = _paymentManager.GetCustomerPayments(_customer.CustomerId);
+            Assert.True(result2.Count > 0);
+            Assert.Equal(5, _customerPayment.CustomerId);
+        }
+
+
     }
 }

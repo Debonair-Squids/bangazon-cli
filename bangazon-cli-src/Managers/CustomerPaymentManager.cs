@@ -7,12 +7,13 @@ namespace bangazon_cli
     {
         private List<CustomerPayment> _paymentTable = new List<CustomerPayment>();
 
-        public void AddPayment(CustomerPayment currentPayment)
+// This method checks to make sure Customer Payment Was added properly!
+// The CustomerPaymentId (currentPaymentId) is set to 0 and if successful it will be change to 2!
+        public int AddPayment(CustomerPayment currentPayment)
         {
             int currentPaymentId = 0;
             _paymentTable.Add(currentPayment);
-            // The PayType will be passed in to the insert method. The insert method will return the PayTypeId.
-            // If the PaymentTypeId is still zero, it didn't work
+
              currentPaymentId= 2;
             return currentPaymentId;
 
