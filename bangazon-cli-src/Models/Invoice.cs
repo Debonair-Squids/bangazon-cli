@@ -17,11 +17,11 @@ namespace bangazon_cli
         public int CustomerId {get; set;}
 
         [Required]
-        public DateTime InvoiceDate {get; set;}
+        public DateTime InvoiceDate {get; set;}= DateTime.Now;
         
 
         // Constructor for Invoice accepting all parameters
-        public Invoice (int InvoiceId, int CustomerPaymentId, int CustomerId, DateTime InvoiceDate)
+        public Invoice (int InvoiceId, int CustomerPaymentId, int CustomerId)
         {
         this.InvoiceId = InvoiceId;
         this.CustomerPaymentId = CustomerPaymentId;

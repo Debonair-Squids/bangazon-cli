@@ -1,4 +1,6 @@
+//Author: Erin Agobert
 using System;
+using System.Collections.Generic;
 using bangazon_cli;
 using Xunit;
 
@@ -6,37 +8,58 @@ namespace bangazon_cli_test
 {
     public class AddProdToCustOrder_Should
     {
+            InvoiceManager manager = new InvoiceManager();
 
-        [Fact]
-        public void AddProdToCustInv()
-        {
-            //Construct an invoice, products, and line items to test
-            Invoice Invoice1 = new Invoice(1,1,1, DateTime.Now);
-
-            Product Product1 = new Product();
-            Product1.ProductId = 1;
-            Product1.Title = "The Sims";
-            Product1.Description = "The Sims base game pack";
-            Product1.Quantity = 1;
-            Product1.DateCreated = DateTime.Now;
-
-            Product Product2 = new Product();
-            Product1.ProductId = 2;
-            Product1.Title = "Destiny 2";
-            Product1.Description = "Destiny, an xbox one game";
-            Product1.Quantity = 1;
-            Product1.DateCreated = DateTime.Now;
+            //Construct an invoice and line items to test
+            Invoice Invoice1 = new Invoice(1,1,1);
 
             LineItem LineItem1 = new LineItem(1,1,1);
-            LineItem LineItem2 = new LineItem(2,1,2);
+            LineItem LineItem2 = new LineItem(2,2,2);
             LineItem LineItem3 = new LineItem(3,1,1);
-            
-            /*
-            -Given a customer has been made active in the program
-            -When the user selects the option to add a product to the active customer's order
-            -Then the user should be prompted with a numbered list of all products
-            -And when one is chosen, the product should be added to an order for the active customer
-            */
-        }
+
+
+            [Fact]
+            public void AddInvoice()
+            {
+                Assert.Equal(1,Invoice1.InvoiceId);
+                Assert.Equal(1,Invoice1.CustomerPaymentId);
+                Assert.Equal(1,Invoice1.CustomerId);
+            }
+
+            [Fact]
+            public void GetInvoice(){
+              manager.AddInvoice(Invoice1);
+              Invoice invoice = manager.GetInvoice(1);
+              Assert.Equal(Invoice1, invoice);
+            }
+
+            [Fact]
+            public void GetAllInvoice(){
+                manager.AddInvoice(Invoice1);
+                List<Invoice> invoices = manager.GetAllInvoices();
+                Assert.Contains(Invoice1, invoices);
+            }
+
+            //Get all lineitems on an invoice
+            [Fact]
+            public void GetAllLineItems(){
+                manager.AddInvoice(Invoice1);
+                manager.AddLineItem(LineItem1);
+                manager.AddLineItem(LineItem2);
+                manager.AddLineItem(LineItem3);
+                List<LineItem> lineitems = manager.GetAllLineItems(1);
+                Assert.Contains(LineItem1, lineitems);
+            }
+
+            //Add new lineitems on an invoice
+            [Fact]
+            public void AddNewLineItem(){
+                manager.AddInvoice(Invoice1);
+                manager.AddLineItem(LineItem1);
+                Assert.Equal(1, LineItem1.LineItemId);
+                Assert.Equal(1, LineItem1.InvoiceId);
+                Assert.Equal(1, LineItem1.ProductId);
+            }
+
     }
 }
