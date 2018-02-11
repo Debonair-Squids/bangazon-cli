@@ -60,17 +60,17 @@ namespace bangazon_cli_test
             Assert.Contains(_customer, allCustomers);
         }
 
-        // [Fact]
-        // public void GetSingleCustomer()
-        // {
-        //     CustomerManager manager = new CustomerManager();
-        //     manager.AddCustomer(_customer);
-        //     Customer theCustomer = manager.GetSingleCustomer(1);
+        [Fact]
+        public void GetSingleCustomer()
+        {
+            CustomerManager manager = new CustomerManager();
+            manager.AddCustomer(_customer);
+            Customer theCustomer = manager.GetSingleCustomer(1);
 
-        // // enter VALUE before the object.property
-        //     Assert.Equal(1, theCustomer.CustomerId);
-        //     // Assert.Equal("Pippins", theCustomer.FirstName);
-        //     // Assert.Equal("McGee", theCustomer.LastName);
-        // }
+        // enter VALUE before the object.property
+            Assert.Equal(1, theCustomer.CustomerId);
+            Assert.Equal("Pippins", theCustomer.FirstName);
+            Assert.Equal("McGee", theCustomer.LastName);
+        }
     }
 }
