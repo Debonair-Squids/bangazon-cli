@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 
 namespace bangazon_cli
 {
@@ -10,33 +11,49 @@ namespace bangazon_cli
     {
         private List<Invoice> _invoices = new List<Invoice>();
 
-        //Method to add a new invoice
-        public void AddInvoice(Invoice invoice)
+        private DatabaseInitializer _db;
+
+        public InvoiceManager(DatabaseInitializer db)
         {
-            _invoices.Add(invoice);
+            _db = db;
+        }
+
+        //Method to add a new invoice and return InvoiceId #
+        public int AddInvoice(Invoice invoice)
+        {
+            int id = _db.Insert($"insert into Invoice values (null, '{invoice.CustomerPaymentId}', '{invoice.CustomerId}', '{invoice.InvoiceDate}') ");
+        return id;
         }
 
         //Method to get a single invoice
-        public Invoice GetInvoice(int id){
-           return  _invoices.Where(i => i.InvoiceId == id).Single();
-        }
-        //Method to get all invoices
-        public List<Invoice> GetAllInvoices(){
-           return  _invoices;
-        }
+    //     public Invoice GetSingleInvoice(Customer activeCustomer)
+    //     {
+    //         _db.Query($"SELECT * FROM Invoice WHERE CustomerId == {activeCustomer.CustomerId}",(SqliteDataReader reader)=>
+    //         {
+    //             _invoices.Clear();
+            
 
-        public List<LineItem> _lineitems = new List<LineItem>();
+    //         });
+    //     //    return  _invoices.Where(i => i.InvoiceId == id).Single();
+    //     }
 
-        //Method to add a new line item
-        public void AddLineItem(LineItem lineitem){
-            _lineitems.Add(lineitem);
-        }
+    //     //Method to get all invoices
+    //     public List<Invoice> GetAllInvoices(){
+    //        return  _invoices;
+    //     }
 
-        //Method to return all line items associated with an invoice
-        public List<LineItem> GetAllLineItems(int id){
-            return  _lineitems.Where(i => i.InvoiceId == id).ToList();
-        }
+    //     public List<LineItem> _lineitems = new List<LineItem>();
+
+    //     //Method to add a new line item
+    //     public void AddLineItem(LineItem lineitem){
+    //         _lineitems.Add(lineitem);
+    //     }
+
+    //     //Method to return all line items associated with an invoice
+    //     public List<LineItem> GetAllLineItems(int id){
+    //         return  _lineitems.Where(i => i.InvoiceId == id).ToList();
+    //     }
 
 
-    }
+    // }
 }
