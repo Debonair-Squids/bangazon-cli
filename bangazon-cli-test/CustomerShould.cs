@@ -22,7 +22,7 @@ namespace bangazon_cli_test
     private CustomerManager _cm;
     private void CustomerManagerShould()
     {
-        _db = new DatabaseInitializer("bangazon_cli_test");
+        _db = new DatabaseInitializer("bangazon_cli_db_test");
         _cm = new CustomerManager(_db);
     }
         // ADD CUSTOMER TEST

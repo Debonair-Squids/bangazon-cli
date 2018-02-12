@@ -20,7 +20,7 @@
 //     private DatabaseInitializer _db;
 //     private void ProductManagerShould()
 //     {
-//       _db = new DatabaseInitializer("bangazon_cli_test");
+//       _db = new DatabaseInitializer("bangazon_cli_db_test");
 //       _pm = new ProductManager(_db);
 //       _cm = new CustomerManager(_db);
 //     }
