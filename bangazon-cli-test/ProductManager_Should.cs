@@ -15,13 +15,13 @@ namespace bangazon_cli_test
     private Product superKite = new Product(2, "Super Kite", "string description", 9.99, 4, 1, 2);
     private InvoiceManager _im;
     private ProductManager _pm;
-    private CustomerManager _cm = new CustomerManager();
     private DatabaseInitializer _db;
+    private CustomerManager _cm;
     private void ProductManagerShould()
     {
       _db = new DatabaseInitializer("bangazon_cli_db_test");
       _pm = new ProductManager(_db);
-
+      _cm = new CustomerManager(_db);
     }
 
 
@@ -58,7 +58,6 @@ namespace bangazon_cli_test
       Assert.Equal(1, singleProduct.Count());
 
     }
-
 
 
 

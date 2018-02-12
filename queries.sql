@@ -75,4 +75,8 @@ CREATE TABLE `Customer` (
 );
 
 
+
+
+
+
 --Insert into productcategory & customer before executed queries for test

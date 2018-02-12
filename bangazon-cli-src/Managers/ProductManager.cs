@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 
 namespace bangazon_cli
 {
@@ -7,7 +8,6 @@ namespace bangazon_cli
   {
 
     private List<Product> products = new List<Product>();
-    // CustomerManager cm = new CustomerManager();
     private DatabaseInitializer _db;
 
     public ProductManager(DatabaseInitializer db)
@@ -30,23 +30,81 @@ namespace bangazon_cli
       string confirmation = _db.Delete($"Delete from Product Where ProductId == {product.ProductId}");
       return confirmation;
     }
-    public List<Product> GetAllProducts()
+
+    public List<Product> GetAllProducts(Customer activeCustomer)
     {
+      _db.Query($"SELECT * FROM Product WHERE CustomerId != {activeCustomer.CustomerId} and Quantity != 0;",
+      (SqliteDataReader reader) =>
+      {
+        products.Clear();
+        while (reader.Read())
+        {
+          products.Add(new Product()
+          {
+            ProductId = reader.GetInt32(0),
+            Title = reader[1].ToString(),
+            Description = reader[2].ToString(),
+            Price = reader.GetDouble(3),
+            Quantity = reader.GetInt32(4),
+            Category = reader.GetInt32(5),
+            CustomerId = reader.GetInt32(6),
+            DateCreated = reader.GetDateTime(7)
+          });
+        }
+      }
+      );
       return products;
     }
 
-    public IEnumerable<Product> GetAllCustomerProducts(Customer activeCustomer)
+    public List<Product> GetAllCustomerProducts(Customer activeCustomer)
     {
-      IEnumerable<Product> allProducts =
-      from prod in products
-      where prod.CustomerId == activeCustomer.CustomerId
-      select prod;
-      return allProducts;
-
+      _db.Query($"SELECT * FROM Product WHERE CustomerId == {activeCustomer.CustomerId} and Quantity != 0;",
+      (SqliteDataReader reader) =>
+      {
+        products.Clear();
+        while (reader.Read())
+        {
+          products.Add(new Product()
+          {
+            ProductId = reader.GetInt32(0),
+            Title = reader[1].ToString(),
+            Description = reader[2].ToString(),
+            Price = reader.GetDouble(3),
+            Quantity = reader.GetInt32(4),
+            Category = reader.GetInt32(5),
+            CustomerId = reader.GetInt32(6),
+            DateCreated = reader.GetDateTime(7)
+          });
+        }
+      }
+      );
+      return products;
     }
-    public Product GetSingleCustomerProduct(Customer activeCustomer, string title)
+
+
+    public List<Product> GetSingleCustomerProduct(Customer activeCustomer, string title)
     {
-      return products.Where(x => x.CustomerId == activeCustomer.CustomerId && x.Title == title).Single();
+      _db.Query($"SELECT * FROM Product WHERE CustomerId == {activeCustomer.CustomerId} and Title == '{title}'",
+      (SqliteDataReader reader) =>
+      {
+        products.Clear();
+        while (reader.Read())
+        {
+            products.Add(new Product()
+            {
+              ProductId = reader.GetInt32(0),
+              Title = reader[1].ToString(),
+              Description = reader[2].ToString(),
+              Price = reader.GetDouble(3),
+              Quantity = reader.GetInt32(4),
+              Category = reader.GetInt32(5),
+              CustomerId = reader.GetInt32(6),
+              DateCreated = reader.GetDateTime(7)
+            });
+          }
+        }
+      );
+      return products;
     }
 
 
@@ -72,8 +130,7 @@ namespace bangazon_cli
       }
       return "Not Updated";
     }
+
+
   }
 }
-// UPDATE table_name
-// SET column1 = value1, column2 = value2, ...
-// WHERE condition;
