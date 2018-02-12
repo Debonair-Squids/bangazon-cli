@@ -41,48 +41,49 @@ namespace bangazon_cli_test
                 Assert.Equal(1,result);
             }
 
-            [Fact]
-            public void GetInvoice()
-            {
-                InvoiceManagerShould();
-                _im.AddInvoice(Invoice1);
-                Invoice invoice = _im.GetInvoice(1);
-                Assert.Equal(Invoice1, invoice);
-            }
+            //Get single invoice of active customer
+            // [Fact]
+            // public void GetInvoice()
+            // {
+            //     InvoiceManagerShould();
+            //     int result = _im.AddInvoice(Invoice1);
+            //     Invoice invoice = _im.GetInvoice(1);
+            //     Assert.Equal(Invoice1, invoice);
+            // }
 
-            [Fact]
-            public void GetAllInvoice()
-            {
-                InvoiceManagerShould();
-                _im.AddInvoice(Invoice1);
-                List<Invoice> invoices = _im.GetAllInvoices();
-                Assert.Contains(Invoice1, invoices);
-            }
+            // [Fact]
+            // public void GetAllInvoice()
+            // {
+            //     InvoiceManagerShould();
+            //     _im.AddInvoice(Invoice1);
+            //     List<Invoice> invoices = _im.GetAllInvoices();
+            //     Assert.Contains(Invoice1, invoices);
+            // }
 
-            //Get all lineitems on an invoice
-            [Fact]
-            public void GetAllLineItems()
-            {
-                InvoiceManagerShould();
-                _im.AddInvoice(Invoice1);
-                _im.AddLineItem(LineItem1);
-                _im.AddLineItem(LineItem2);
-                _im.AddLineItem(LineItem3);
-                List<LineItem> lineitems = _im.GetAllLineItems(1);
-                Assert.Contains(LineItem1, lineitems);
-            }
+            // //Get all lineitems on an invoice
+            // [Fact]
+            // public void GetAllLineItems()
+            // {
+            //     InvoiceManagerShould();
+            //     _im.AddInvoice(Invoice1);
+            //     _im.AddLineItem(LineItem1);
+            //     _im.AddLineItem(LineItem2);
+            //     _im.AddLineItem(LineItem3);
+            //     List<LineItem> lineitems = _im.GetAllLineItems(1);
+            //     Assert.Contains(LineItem1, lineitems);
+            // }
 
-            //Add new lineitems on an invoice
-            [Fact]
-            public void AddNewLineItem()
-            {
-                InvoiceManagerShould();
-                _im.AddInvoice(Invoice1);
-                _im.AddLineItem(LineItem1);
-                Assert.Equal(1, LineItem1.LineItemId);
-                Assert.Equal(1, LineItem1.InvoiceId);
-                Assert.Equal(1, LineItem1.ProductId);
-            }
+            // //Add new lineitems on an invoice
+            // [Fact]
+            // public void AddNewLineItem()
+            // {
+            //     InvoiceManagerShould();
+            //     _im.AddInvoice(Invoice1);
+            //     _im.AddLineItem(LineItem1);
+            //     Assert.Equal(1, LineItem1.LineItemId);
+            //     Assert.Equal(1, LineItem1.InvoiceId);
+            //     Assert.Equal(1, LineItem1.ProductId);
+            // }
 
     }
 }
