@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 
 namespace bangazon_cli
 {
@@ -10,10 +11,19 @@ namespace bangazon_cli
     {
         private List<Invoice> _invoices = new List<Invoice>();
 
-        //Method to add a new invoice
-        public void AddInvoice(Invoice invoice)
+        private DatabaseInitializer _db;
+
+        public InvoiceManager(DatabaseInitializer db)
         {
-            _invoices.Add(invoice);
+            _db = db;
+        }
+
+        //Method to add a new invoice and return InvoiceId #
+        public int AddInvoice(Invoice invoice)
+        {
+            // _invoices.Add(invoice);
+            int id = _db.Insert($"insert into Invoice values (null, '{invoice.CustomerPaymentId}', '{invoice.CustomerId}', '{invoice.InvoiceDate}') ");
+        return id;
         }
 
         //Method to get a single invoice

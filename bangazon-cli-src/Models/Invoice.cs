@@ -21,7 +21,7 @@ namespace bangazon_cli
         
 
         // Constructor for Invoice accepting all parameters
-        public Invoice (int InvoiceId, int CustomerPaymentId, int CustomerId)
+        public Invoice (int CustomerPaymentId, int CustomerId)
         {
         this.InvoiceId = InvoiceId;
         this.CustomerPaymentId = CustomerPaymentId;
