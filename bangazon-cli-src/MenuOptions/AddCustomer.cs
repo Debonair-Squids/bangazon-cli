@@ -4,7 +4,6 @@ namespace bangazon_cli
 {
     public class AddCustomerMenu
     {
-
          public static void Show()
         {
             Console.Clear();
@@ -52,9 +51,10 @@ namespace bangazon_cli
                 Zip = Zip,
                 Phone = Phone
             };
-            
+
             CustomerManager cm = new CustomerManager();
             cm.AddCustomer(newCustomer);
+
 
             Console.Clear();
             Console.WriteLine($"You have created a customer! {newCustomer.FirstName} {newCustomer.LastName} is now in the Bangazon System");

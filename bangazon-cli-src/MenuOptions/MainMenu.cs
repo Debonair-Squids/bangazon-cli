@@ -28,7 +28,7 @@ namespace bangazon_cli
 
             if (choice == 1)
             {
-                AddCustomerMenu.Show();
+                // AddCustomerMenu.Show();
             }
             // else if (choice == 2)
             // {

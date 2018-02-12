@@ -1,4 +1,4 @@
-//Author : Kolden Prue 
+//Author : Kolden Prue
 //Tests for updating, adding, and removing a product from a customer.
 
 using System;
@@ -9,13 +9,11 @@ using bangazon_cli;
 namespace bangazon_cli_test
 {
 
-
-
   public class ProductManager_Should
   {
 
     private Product kite = new Product();
-    private Product superKite = new Product (2, "Super Kite", "string description", 9.99, 4, 1, 1);    
+    private Product superKite = new Product (2, "Super Kite", "string description", 9.99, 4, 1, 1);
 
     [Fact]
     public void AddProduct()
@@ -56,14 +54,14 @@ namespace bangazon_cli_test
       Product singleProduct =  prodMan.GetSingleCustomerProduct(activeCustomer, "Super Kite");
       prodMan.UpdateProduct(singleProduct, 1, "Great Kite");
       prodMan.UpdateProduct(singleProduct, 2, "This is very good kite, great even");
-      prodMan.UpdateProduct(singleProduct, 3, "25.99"); 
-      prodMan.UpdateProduct(singleProduct, 4, "20");      
-           
-      
+      prodMan.UpdateProduct(singleProduct, 3, "25.99");
+      prodMan.UpdateProduct(singleProduct, 4, "20");
+
+
       Assert.Equal("Great Kite", singleProduct.Title);
       Assert.Equal("This is very good kite, great even", singleProduct.Description);
-      Assert.Equal(25.99, singleProduct.Price);      
-      Assert.Equal(20, singleProduct.Quantity);            
+      Assert.Equal(25.99, singleProduct.Price);
+      Assert.Equal(20, singleProduct.Quantity);
     }
 
     [Fact]
@@ -99,7 +97,7 @@ namespace bangazon_cli_test
       Product toRemove = prodMan.GetSingleCustomerProduct(activeCustomer, "Super Kite");
       prodMan.RemoveProduct(toRemove);
       IEnumerable<Product> allProducts = prodMan.GetAllCustomerProducts(activeCustomer);
-      Assert.DoesNotContain(superKite,allProducts );      
+      Assert.DoesNotContain(superKite,allProducts );
       Assert.Contains(kite,allProducts);
     }
 
