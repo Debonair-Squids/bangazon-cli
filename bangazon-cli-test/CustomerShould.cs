@@ -14,7 +14,7 @@ namespace bangazon_cli_test
                 "Nashville",
                 "TN",
                 "37210",
-                "aaaahhhhhh"
+                "1234567890"
             );
     private InvoiceManager _im;
     private ProductManager _pm;
