@@ -34,7 +34,7 @@ namespace bangazon_cli
             this.City = "Nashville";
             this.State = "TN";
             this.Zip = "37210";
-            this.Phone = "aaaahhhhhh";
+            this.Phone = "1234567890";
         }
 
         // Constructor for Customer accepting all property parameters
