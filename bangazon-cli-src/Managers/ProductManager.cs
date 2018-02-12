@@ -5,6 +5,7 @@ namespace bangazon_cli
 {
   public class ProductManager
   {
+
     private List<Product> products = new List<Product>();
     // CustomerManager cm = new CustomerManager();
     private DatabaseInitializer _db;

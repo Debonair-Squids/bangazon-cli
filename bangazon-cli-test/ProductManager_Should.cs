@@ -1,4 +1,4 @@
-//Author : Kolden Prue 
+//Author : Kolden Prue
 //Tests for updating, adding, and removing a product from a customer.
 using System;
 using Xunit;
