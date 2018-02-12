@@ -27,20 +27,20 @@ namespace bangazon_cli
 
         public Customer ()
         {
-            this.CustomerId = 1;
-            this.FirstName = "Pippins";
-            this.LastName = "McGee";
-            this.StreetAddress = "123 Buttz Rd";
+            // this.CustomerId = 1;
+            this.FirstName = "Erin";
+            this.LastName = "Egobert";
+            this.StreetAddress = "123 ok Rd";
             this.City = "Nashville";
             this.State = "TN";
             this.Zip = "37210";
-            this.Phone = "9876543210";
+            this.Phone = "aaaahhhhhh";
         }
 
         // Constructor for Customer accepting all property parameters
-        public Customer (int cid, string first, string last, string address, string city, string state, string zip, string phone)
+        public Customer (string first, string last, string address, string city, string state, string zip, string phone)
         {
-            this.CustomerId = cid;
+            // this.CustomerId = cid;
             this.FirstName = first;
             this.LastName = last;
             this.StreetAddress = address;

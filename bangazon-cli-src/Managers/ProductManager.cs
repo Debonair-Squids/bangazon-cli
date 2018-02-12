@@ -19,8 +19,8 @@ namespace bangazon_cli
     public int AddProductToSell(Product product)
     {
       products.Add(product);
-      // int id = _db.Insert($"insert into Product values (null, '{product.Title}', '{product.Description}', '{product.Price}', '{product.Quantity}', '{product.Category}', '{product.CustomerId}', '{product.DateCreated}') ");
-      return 7;
+      int id = _db.Insert($"insert into Product values (null, '{product.Title}', '{product.Description}', '{product.Price}', '{product.Quantity}', '{product.Category}', '{product.CustomerId}', '{product.DateCreated}') ");
+      return id;
     }
 
     public string RemoveProduct(Product product)

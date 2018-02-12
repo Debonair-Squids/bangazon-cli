@@ -18,27 +18,25 @@ DROP TABLE Customer;
 
 CREATE TABLE `LineItem` (
 `LineItemId` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-`InvoiceId` INTEGER NOT NULL, 
+`InvoiceId` INTEGER NOT NULL,
 `ProductId` INTEGER NOT NULL,
 FOREIGN KEY (`InvoiceId`) REFERENCES `Invoice`(`InvoiceId`),
 FOREIGN KEY (`ProductId`) REFERENCES `Product`(`ProductId`)
-
 );
 
 
 CREATE TABLE `Invoice` (
 `InvoiceId` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-`CustomerId` INTEGER NOT NULL, 
+`CustomerId` INTEGER NOT NULL,
 `CustomerPaymentId` INTEGER NOT NULL,
 `InvoiceDate`  TEXT NOT NULL,
 FOREIGN KEY (`CustomerId`) REFERENCES `Customer`(`CustomerId`),
 FOREIGN KEY (`CustomerPaymentId`) REFERENCES `CustomerPayment`(`CustomerPaymentId`)
-
 );
 
 CREATE TABLE `CustomerPayment` (
 `CustomerPaymentId` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-`CustomerId` INTEGER NOT NULL, 
+`CustomerId` INTEGER NOT NULL,
 `Account` INTEGER NOT NULL,
 `PaymentTypeName`  TEXT NOT NULL,
 FOREIGN KEY (`CustomerId`) REFERENCES `Customer`(`CustomerId`)
@@ -52,7 +50,7 @@ CREATE TABLE `ProductCategory` (
 
 CREATE TABLE `Product` (
 `ProductId` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-`Title` TEXT NOT NULL, 
+`Title` TEXT NOT NULL,
 `Description` TEXT NOT NULL,
 `Price`   INTEGER NOT NULL,
 `Quantity`   INTEGER NOT NULL,
@@ -67,11 +65,11 @@ FOREIGN KEY (`ProductCategoryId`) REFERENCES `ProductCategory`(`ProductCategoryI
 
 CREATE TABLE `Customer` (
 `CustomerId` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-`FirstName` TEXT NOT NULL, 
+`FirstName` TEXT NOT NULL,
 `LastName` TEXT NOT NULL,
 `StreetAddress`   TEXT NOT NULL,
 `City`   TEXT NOT NULL,
-`'State'` TEXT NOT NULL,
+`State` TEXT NOT NULL,
 `Zip` TEXT NOT NULL,
 `Phone` TEXT NOT NULL
 );
