@@ -1,5 +1,5 @@
 //Author: Erin Agobert
-//Purpose:  
+//Purpose:
 using System;
 using System.Collections.Generic;
 using bangazon_cli;
@@ -13,20 +13,21 @@ namespace bangazon_cli_test
         // private DatabaseInitializer _db;
         private InvoiceManager _im;
         private ProductManager _pm;
-        private CustomerManager _cm = new CustomerManager();
         private DatabaseInitializer _db;
+        private CustomerManager _cm;
 
         private void InvoiceManagerShould()
     {
       _db = new DatabaseInitializer("bangazon_cli_db_test");
       _pm = new ProductManager(_db);
       _im = new InvoiceManager(_db);
+      _cm = new CustomerManager(_db);
 
     }
             // InvoiceManager manager = new InvoiceManager();
 
             //Construct an invoice and line items to test
-            Invoice Invoice1 = new Invoice(1,1); 
+            Invoice Invoice1 = new Invoice(1,1);
 
             LineItem LineItem1 = new LineItem(1,1,1);
             LineItem LineItem2 = new LineItem(2,2,2);

@@ -31,7 +31,7 @@ namespace bangazon_cli
     //         _db.Query($"SELECT * FROM Invoice WHERE CustomerId == {activeCustomer.CustomerId}",(SqliteDataReader reader)=>
     //         {
     //             _invoices.Clear();
-            
+
 
     //         });
     //     //    return  _invoices.Where(i => i.InvoiceId == id).Single();
@@ -55,5 +55,5 @@ namespace bangazon_cli
     //     }
 
 
-    // }
+    }
 }
