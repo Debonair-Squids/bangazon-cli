@@ -71,10 +71,14 @@ CREATE TABLE `Customer` (
 `LastName` TEXT NOT NULL,
 `StreetAddress`   TEXT NOT NULL,
 `City`   TEXT NOT NULL,
-`'State'` TEXT NOT NULL,
+`State` TEXT NOT NULL,
 `Zip` TEXT NOT NULL,
 `Phone` TEXT NOT NULL
 );
+
+
+
+
 
 
 --Insert into productcategory & customer before executed queries for test
