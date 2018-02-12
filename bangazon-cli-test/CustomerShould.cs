@@ -7,55 +7,54 @@ namespace bangazon_cli_test
 {
     public class CustomerShould
     {
-    private Customer _customer;
-
-        // ADD CUSTOMER TEST
-        public CustomerShould()
-        {
-            /*
-                Properties of job
-                    - First
-                    - Last
-                    -Address
-                    -City
-                    -State
-                    -Zip
-                    -Phone
-             */
-            _customer = new Customer(
-                1,
-                "Pippins",
-                "McGee",
-                "123 Buttz Rd.",
+    private Customer _customer = new Customer(
+                "Erin",
+                "Egobert",
+                "123 ok Rd.",
                 "Nashville",
                 "TN",
                 "37210",
-                "9876543210"
+                "1234567890"
             );
+    private InvoiceManager _im;
+    private ProductManager _pm;
+    private DatabaseInitializer _db;
+    private CustomerManager _cm;
+    private void CustomerManagerShould()
+    {
+        _db = new DatabaseInitializer("bangazon_cli_db_test");
+        _cm = new CustomerManager(_db);
+    }
+        // ADD CUSTOMER TEST
+        [Fact]
+        public void AddCustomer()
+        {
+            CustomerManagerShould();
+            Customer Pippins = new Customer();
+            int result = _cm.AddCustomer(Pippins);
+            Assert.True(result > 0);
         }
-
+        // GET All Customers
         [Fact]
         public void GetAllCustomers()
         {
-            CustomerManager newCustomer = new CustomerManager();
+            CustomerManagerShould();
+            CustomerManager newCustomer = new CustomerManager(_db);
             newCustomer.AddCustomer(_customer);
             List<Customer> allCustomers = newCustomer.GetAllCustomers();
-
-            Assert.Contains(_customer, allCustomers);
+            int result = newCustomer.AddCustomer(_customer);
+            Assert.True(result > 0);
         }
-
+        // GET Single Customers
         [Fact]
         public void GetSingleCustomer()
         {
-            CustomerManager manager = new CustomerManager();
-            manager.AddCustomer(_customer);
-            Customer theCustomer = manager.GetSingleCustomer(1);
-
-        // enter VALUE before the object.property
-            Assert.Equal(1, theCustomer.CustomerId);
-            Assert.Equal("Pippins", theCustomer.FirstName);
-            Assert.Equal("McGee", theCustomer.LastName);
-
+            CustomerManagerShould();
+            CustomerManager newCustomer = new CustomerManager(_db);
+            newCustomer.AddCustomer(_customer);
+            Customer theCustomer = newCustomer.GetSingleCustomer(1);
+            int result = newCustomer.AddCustomer(_customer);
+            Assert.True(result > 0);
         }
     }
 }
