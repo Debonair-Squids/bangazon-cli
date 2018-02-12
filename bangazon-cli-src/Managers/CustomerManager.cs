@@ -1,5 +1,7 @@
+
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 
 namespace bangazon_cli
 {
@@ -10,7 +12,7 @@ namespace bangazon_cli
         public void AddCustomer(Customer steve)
         {
             _customerTable.Add(steve);
-        }   
+        }
 
         public List<Customer> GetAllCustomers ()
         {
