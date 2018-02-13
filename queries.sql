@@ -70,6 +70,7 @@ CREATE TABLE `Customer` (
 `Phone` TEXT NOT NULL
 );
 
+INSERT into Customer values ('Jesse', 'Page', '123 Whatever Rd.', 'Nashville', 'TN', '12345', '1234567890');
 
 INSERT INTO Customer VALUES(null,'Tim', 'Mit', '100 a street','Nashville', 'TN', '456764','1122234321' );
 INSERT INTO CustomerPayment VALUES(null,1,897654,'Amex');
@@ -172,6 +173,5 @@ INSERT INTO LineItem VALUES(null,1,1);
 
 
 
-
-
+INSERT into ProductCategory values (1, 'Toys');
 
