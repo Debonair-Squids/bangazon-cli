@@ -74,9 +74,10 @@ CREATE TABLE `Customer` (
 `Phone` TEXT NOT NULL
 );
 
+INSERT into Customer values ('Jesse', 'Page', '123 Whatever Rd.', 'Nashville', 'TN', '12345', '1234567890');
 
+INSERT into CustomerPayment values (1, 12345, 'Visa');
 
-
-
+INSERT into ProductCategory values (1, 'Toys');
 
 --Insert into productcategory & customer before executed queries for test
