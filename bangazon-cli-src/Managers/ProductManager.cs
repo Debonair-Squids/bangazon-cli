@@ -107,6 +107,31 @@ namespace bangazon_cli
       return products;
     }
 
+    public Product GetSingleCustomerProduct(int id)
+    {
+      _db.Query($"SELECT * FROM Product WHERE ProductId == {id}",
+      (SqliteDataReader reader) =>
+      {
+        products.Clear();
+        while (reader.Read())
+        {
+            products.Add(new Product()
+            {
+              ProductId = reader.GetInt32(0),
+              Title = reader[1].ToString(),
+              Description = reader[2].ToString(),
+              Price = reader.GetDouble(3),
+              Quantity = reader.GetInt32(4),
+              Category = reader.GetInt32(5),
+              CustomerId = reader.GetInt32(6),
+              DateCreated = reader.GetDateTime(7)
+            });
+          }
+        }
+      );
+      return products[0];
+    }
+
 
     public string UpdateProduct(Product product, int replaceChoice, string update)
     {

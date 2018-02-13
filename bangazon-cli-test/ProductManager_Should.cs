@@ -22,7 +22,7 @@ namespace bangazon_cli_test
     }
 
     [Fact]
-    public void AddProductToSell()
+    public void AddProductToSell()  
     {
       ProductManagerShould();
       Customer erin = new Customer();
@@ -38,7 +38,8 @@ namespace bangazon_cli_test
       yarn.CustomerId = activeCustomerId;
       yarn.DateCreated = DateTime.Now;
       int result = _pm.AddProductToSell(yarn);
-      Assert.Equal(12, result);
+      Product returnedAfterAdding = _pm.GetSingleCustomerProduct(result);
+      Assert.Equal(returnedAfterAdding.ProductId, result);
     }
 
 
