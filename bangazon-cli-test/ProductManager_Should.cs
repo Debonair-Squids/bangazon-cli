@@ -11,9 +11,6 @@ namespace bangazon_cli_test
   public class ProductManager_Should
   {
 
-    private Product kite = new Product();
-    private Product superKite = new Product(2, "Super Kite", "string description", 9.99, 4, 1, 2);
-    private InvoiceManager _im;
     private ProductManager _pm;
     private DatabaseInitializer _db;
     private CustomerManager _cm;
@@ -24,37 +21,46 @@ namespace bangazon_cli_test
       _cm = new CustomerManager(_db);
     }
 
-
     [Fact]
-    public void AddProductToSell()
+    public void AddProductToSell()  
     {
       ProductManagerShould();
+      Customer erin = new Customer();
       //Establish active customer , create product with active customer as id, then pass to add method
-      Customer jim = new Customer();
-      _cm.AddCustomer(jim);
-      Customer activeCustomer = _cm.GetSingleCustomer(1);
-      Product yarn = new Product(1, "yarn", "Rolled up", 2.99, 60, 1, activeCustomer.CustomerId);
-      int result = _pm.AddProductToSell(yarn);
-      Assert.Equal(1, result);
-    }
+      int activeCustomerId = _cm.AddCustomer(erin);
 
+      Product yarn = new Product();
+      yarn.Title = "Yard Yarn";
+      yarn.Description = "Rolled up";
+      yarn.Price = 1.99;
+      yarn.Quantity = 60;
+      yarn.Category = 1;
+      yarn.CustomerId = activeCustomerId;
+      yarn.DateCreated = DateTime.Now;
+      int result = _pm.AddProductToSell(yarn);
+      Product returnedAfterAdding = _pm.GetSingleCustomerProduct(result);
+      Assert.Equal(returnedAfterAdding.ProductId, result);
+    }
 
 
     [Fact]
     public void GetAllProducts()
     {
       ProductManagerShould();
-      Customer activeCustomer = new Customer("Kolden", "Prue", "Street Adress", "Nashville", "TN","376787", "763726327868");
-      List <Product> allProducts = _pm.GetAllProducts(activeCustomer);
-      Assert.Equal(3, allProducts.Count());
+      Customer Kolden = new Customer("Kolden", "Prue", "Street Adress", "Nashville", "TN", "376787", "763726327868");
+      int result = _cm.AddCustomer(Kolden);
+      Customer activeCustomer = _cm.GetSingleCustomer(result);
+
+      List<Product> allProducts = _pm.GetAllProducts(activeCustomer);
+      Assert.Equal(12, allProducts.Count());
     }
 
     [Fact]
     public void GetSingleCustomerProduct()
     {
       ProductManagerShould();
-      Customer activeCustomer = new Customer("Kolden", "Prue", "Street Adress", "Nashville", "TN","376787", "763726327868");
-      List <Product> singleProduct = _pm.GetSingleCustomerProduct(activeCustomer, "Baseball");
+      Customer retrievedCustomer = _cm.GetSingleCustomer(1);
+      List<Product> singleProduct = _pm.GetSingleCustomerProduct(retrievedCustomer, "Hand Shovel");
       Assert.Equal(1, singleProduct.Count());
 
     }
@@ -65,24 +71,22 @@ namespace bangazon_cli_test
     public void UpdateProduct()
     {
       ProductManagerShould();
-      Customer activeCustomer = new Customer();
-      Product yarn = new Product(2, "yarn", "Rolled up", 2.99, 60, 1, activeCustomer.CustomerId);
-      _pm.AddProductToSell(yarn);
       //User selects the first item in cli which has a corresponding productId of 1
-      List<Product> allProducts = _pm.GetAllCustomerProducts(activeCustomer);
-      Product selectedProduct = allProducts.Where(x => x.ProductId == 1).Single();
       //Gather fields from cli to complete the updates parameter reqs
 
-     string updated =  _pm.UpdateProduct(selectedProduct, 1,"Yarnballs");
-     string updated2 = _pm.UpdateProduct(selectedProduct, 2, "A better description");
-     string updated3 = _pm.UpdateProduct(selectedProduct, 3, "3.99");
-     string updated4 = _pm.UpdateProduct(selectedProduct, 4, "25");
+      Customer activeCustomer = _cm.GetSingleCustomer(1);
+      List<Product> selectedProductList = _pm.GetSingleCustomerProduct(activeCustomer, "Shovel");
+      Product selectedProduct = selectedProductList[0];
+      string updated = _pm.UpdateProduct(selectedProduct, 1, "Good Shovel");
+      string updated2 = _pm.UpdateProduct(selectedProduct, 2, "25 footer");
+      string updated3 = _pm.UpdateProduct(selectedProduct, 3, "350.99");
+      string updated4 = _pm.UpdateProduct(selectedProduct, 4, "30");
 
 
-     Assert.Equal("Updated", updated);
-     Assert.Equal("Updated", updated2);
-     Assert.Equal("Updated", updated3);
-     Assert.Equal("Updated", updated4);
+      Assert.Equal("Updated", updated);
+      Assert.Equal("Updated", updated2);
+      Assert.Equal("Updated", updated3);
+      Assert.Equal("Updated", updated4);
 
 
     }
@@ -92,8 +96,7 @@ namespace bangazon_cli_test
     public void GetAllCustomerProducts()
     {
       ProductManagerShould();
-      Customer activeCustomer = new Customer("Kolden", "Prue", "Street Adress", "Nashville", "TN","12345", "1234567890");
-      // _cm.GetSingleCustomer(activeCustomer.CustomerId);
+      Customer activeCustomer = _cm.GetSingleCustomer(1);
       List<Product> allProducts = _pm.GetAllCustomerProducts(activeCustomer);
       Assert.Equal(3, allProducts.Count());
     }
@@ -105,14 +108,12 @@ namespace bangazon_cli_test
     public void RemoveProduct()
     {
       ProductManagerShould();
-      //Establish active customer , create product with active customer as id, then pass to add method
-      Customer jim = new Customer();
-      _cm.AddCustomer(jim);
-      Customer activeCustomer = _cm.GetSingleCustomer(1);
-      IEnumerable<Product> allCustomerProducts = _pm.GetAllCustomerProducts(activeCustomer);
+      //Establish active customer , create product with active customer as id, then pass to method
+      Customer activeCustomer = _cm.GetSingleCustomer(5);
+      List<Product> listToRemove = _pm.GetSingleCustomerProduct(activeCustomer, "Ladel");
       //User selects the first item in cli display which has a corresponding productId of 1
-      Product selectedProduct = allCustomerProducts.Where(x => x.ProductId == 1).Single();
-      string confirmation = _pm.RemoveProduct(selectedProduct);
+      Product toRemove = listToRemove[0];
+      string confirmation = _pm.RemoveProduct(toRemove);
       Assert.Equal("Confirm", confirmation);
     }
 
